@@ -19,6 +19,6 @@ To run PostgreSQL database:
 ```docker create -v /var/lib/postgresql/data --name PostgresData alpine && docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=admin -d --volumes-from PostgresData postgres```
 
 Deployed on Heroku:
-https://boiling-scrubland-76244.herokuapp.com/
+https://postgrewithspring.herokuapp.com/
 
 TODO: Add simple interactions with PostgreSQL, and set up tables.
