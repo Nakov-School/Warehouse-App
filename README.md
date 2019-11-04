@@ -2,6 +2,7 @@
 
 **Backend**
 
+(Maybe write a shell script to automate this?)
 How to set up:
 
 ```git clone -b Backend https://github.com/Nakov-School/Warehouse-App.git```
