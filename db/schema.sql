@@ -1,10 +1,30 @@
--- testing purposes
-CREATE TABLE info
+CREATE TABLE users
 (
 
- ID SERIAL,
+ USER_ID SERIAL,
+ BOXES integer[],
+
+ PRIMARY KEY (USER_ID)
+
+);
+
+CREATE TABLE boxes
+(
+ BOX_ID SERIAL NOT NULL,
+ PALLETES integer[],
 
 
- PRIMARY KEY (ID)
+ PRIMARY KEY (BOX_ID)
+
+);
+CREATE TABLE palletes
+(
+
+ PALETTE_ID SERIAL NOT NULL,
+ -- How do i represent contents?
+ -- Maybe as JSON?
+ PALETTE_CONTENTS TEXT,
+
+ PRIMARY KEY(PALETTE_ID)
 
 );
