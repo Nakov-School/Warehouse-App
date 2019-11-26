@@ -23,12 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="eb87b8fe-d847-4705-a671-6c2052a01c3f">
-        <schema name="pg_catalog" object-types="table" />
-        <schema name="public" object-types="table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3a9c31ba-5728-43ff-b78a-9167f678a41a">
@@ -174,7 +169,7 @@
           <database value="daj219h0vjdkim" />
           <type value="USER_PASSWORD" />
           <user value="atqinvgiabrify" />
-          <deprecated-pwd value="ZmMzOGNlZjQwNmU2NTVhMTE2NjViYjRiN2Q0NDhlMGVmN2U0MTgzMzJhODExOWJjMDM0ZTZiMTcyZDZkMzlmZA==" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="false" />
