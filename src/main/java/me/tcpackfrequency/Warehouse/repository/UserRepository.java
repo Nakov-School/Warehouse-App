@@ -10,7 +10,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findAll();
 
 
-
     @Query(value = "SELECT user_name FROM users", nativeQuery = true)
     List<String> findAllNames();
 }
