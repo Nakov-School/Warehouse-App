@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,6 +27,11 @@ public class BoxController {
         }
         // make new exceptions!!
         throw new UsernameNotFoundException("box not found");
+    }
+
+    @GetMapping("/boxes")
+    public List<Box> allBoxes(){
+        return repository.findAll();
     }
 
     @PutMapping("/boxes/{id}")

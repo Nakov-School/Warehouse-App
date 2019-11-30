@@ -17,6 +17,21 @@ public class Box {
     @Column(name = "BOX_PR")
     private boolean pr;
 
+    @Column(name = "box_sector")
+    private int sector;
+
+    @Column(name = "box_position")
+    private int position;
+
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
     public Box(){
         super();
     }
@@ -28,6 +43,14 @@ public class Box {
         this.pr = pr;
     }
 
+    public Box(int id, String content, String quantity, boolean pr, int sector, int position) {
+        this.id = id;
+        this.content = content;
+        this.quantity = quantity;
+        this.pr = pr;
+        this.sector = sector;
+        this.position = position;
+    }
 
     public int getId() {
         return id;
@@ -61,6 +84,12 @@ public class Box {
         this.pr = pr;
     }
 
+    public int getSector() {
+        return sector;
+    }
 
+    public void setSector(int sector) {
+        this.sector = sector;
+    }
 
 }
