@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     UserRepository repository;
 
-    @GetMapping
+    @GetMapping("/users/")
     public List<User> allUsers(){
         return repository.findAll();
     }
@@ -42,8 +42,8 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
-        User user1 = new User(user.getUSER_ID(), user.getUSER_NAME(), securityConfig.passwordEncoder().encode(user.getUSER_PASSWORD()));
-        User savedUser = repository.save(user1);
+        user.setUSER_PASSWORD(securityConfig.passwordEncoder().encode(user.getUSER_PASSWORD()));
+        User savedUser = repository.save(user);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedUser.getUSER_ID()).toUri();

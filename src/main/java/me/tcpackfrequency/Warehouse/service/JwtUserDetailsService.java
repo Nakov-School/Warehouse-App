@@ -1,6 +1,5 @@
 package me.tcpackfrequency.Warehouse.service;
 
-import me.tcpackfrequency.Warehouse.config.WebSecurityConfig;
 import me.tcpackfrequency.Warehouse.model.User;
 import me.tcpackfrequency.Warehouse.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,7 @@ import java.util.ArrayList;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
-
-	@Autowired
-	WebSecurityConfig security;
+	
 
 	@Autowired
 	UserRepository repository;
@@ -25,7 +22,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		for(User s : repository.findAll()){
 			if(s.getUSER_NAME().equals(username)){
-				return new org.springframework.security.core.userdetails.User(s.getUSER_NAME(), security.passwordEncoder().encode(s.getUSER_PASSWORD()), new ArrayList<>()
+				return new org.springframework.security.core.userdetails.User(s.getUSER_NAME(), s.getUSER_PASSWORD(), new ArrayList<>()
 				);
 			}
 		}
