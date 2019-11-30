@@ -1,5 +1,6 @@
 package me.tcpackfrequency.Warehouse.controller;
 
+import me.tcpackfrequency.Warehouse.config.WebSecurityConfig;
 import me.tcpackfrequency.Warehouse.model.User;
 import me.tcpackfrequency.Warehouse.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
+    WebSecurityConfig securityConfig;
+
+    @Autowired
     UserRepository repository;
 
     @GetMapping
@@ -25,18 +29,21 @@ public class UserController {
 
     @GetMapping("/users/{id}")
     public User getUserByID(@PathVariable int id) {
-        for(User u : repository.findAll()){
-            if(u.getUSER_ID() == id){
-                return u;
-            }
+
+        Optional<User> user = repository.findById(id);
+
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new UsernameNotFoundException("User not found.");
         }
-        // make exception, figure out why it doesnt throw it?
-        throw new UsernameNotFoundException("Username not found.");
     }
+
 
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
-        User savedUser = repository.save(user);
+        User user1 = new User(user.getUSER_ID(), user.getUSER_NAME(), securityConfig.passwordEncoder().encode(user.getUSER_PASSWORD()));
+        User savedUser = repository.save(user1);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedUser.getUSER_ID()).toUri();

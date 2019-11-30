@@ -20,13 +20,13 @@ public class BoxController {
 
     @GetMapping("/boxes/{id}")
     public Box getBox(@PathVariable int id){
-        for(Box u : repository.findAll()){
-            if(u.getId() == id){
-                return u;
-            }
+       Optional<Box> box = repository.findById(id);
+        if(box.isPresent()){
+            return box.get();
+        } else {
+            // make new exceptions!!
+            throw new UsernameNotFoundException("box not found");
         }
-        // make new exceptions!!
-        throw new UsernameNotFoundException("box not found");
     }
 
     @GetMapping("/boxes")
