@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,6 +17,11 @@ public class UserController {
 
     @Autowired
     UserRepository repository;
+
+    @GetMapping
+    public List<User> allUsers(){
+        return repository.findAll();
+    }
 
     @GetMapping("/users/{id}")
     public User getUserByID(@PathVariable int id) {
