@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
-	
 
 	@Autowired
 	UserRepository repository;
