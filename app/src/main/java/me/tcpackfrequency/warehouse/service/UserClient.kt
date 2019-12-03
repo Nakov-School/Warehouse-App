@@ -16,6 +16,8 @@ interface UserClient {
     @GET("/users/1")
     fun helloWorld(@Header("Authorization") auth: String): Call<ResponseBody>
 
-    @GET("/sector/1")
-    fun getSector(@Header("Authorization") auth: String): Call<ResponseBody>
+    @GET("/sector/{id}")
+    fun getSector(@Header("Authorization") auth: String, @Path(value = "id", encoded = true) id: Int): Call<ResponseBody>
+
+
 }

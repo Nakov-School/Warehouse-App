@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         // set on-click listener
         btn_submit.setOnClickListener {
-            val user_name = et_user_name.text
+            val user_name = et_user_name.text.trim()
             val password = et_password.text
 
             val login = userClient.login(Login(user_name.toString(), password.toString()))
