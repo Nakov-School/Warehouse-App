@@ -1,6 +1,7 @@
 package me.tcpackfrequency.warehouse
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Log.d
@@ -17,17 +18,20 @@ import kotlinx.android.synthetic.main.content_main.*
 import me.tcpackfrequency.warehouse.model.Login
 import me.tcpackfrequency.warehouse.model.User
 import me.tcpackfrequency.warehouse.service.UserClient
+import okhttp3.ResponseBody
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    val retrofit = Retrofit.Builder()
-        .baseUrl("https://postgrewithspring.herokuapp.com")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    companion object {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://postgrewithspring.herokuapp.com")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-    val userClient = retrofit.create(UserClient::class.java)
+        val userClient = retrofit.create(UserClient::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         var et_password = findViewById<EditText>(R.id.et_password)
         var btn_reset = findViewById<Button>(R.id.btn_reset)
         var btn_submit = findViewById<Button>(R.id.btn_submit)
+        var test = findViewById<Button>(R.id.test)
+
+
 
         btn_reset.setOnClickListener {
             // clearing user_name and password edit text views on reset button click
@@ -49,17 +56,20 @@ class MainActivity : AppCompatActivity() {
             val user_name = et_user_name.text
             val password = et_password.text
 
-
-
             val login = userClient.login(Login(user_name.toString(), password.toString()))
 
 
+            var token = ""
 
             login.enqueue( object: Callback<User> {
 
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if(response.isSuccessful){
                         Toast.makeText(this@MainActivity, response.body()?.token, Toast.LENGTH_LONG).show()
+                        token = "Bearer " + response.body()?.token.toString()
+                        val intent = Intent(this@MainActivity, SectionActivity::class.java)
+                        intent.putExtra("token", token)
+                        startActivity(intent)
                     } else {
                         Toast.makeText(this@MainActivity, "login is not correct :(", Toast.LENGTH_LONG).show()
                     }
@@ -70,7 +80,26 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
+            test.setOnClickListener {
+                val info = userClient.helloWorld(token)
 
+                info.enqueue(object: Callback<ResponseBody> {
+
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        if(response.isSuccessful){
+                            Toast.makeText(this@MainActivity, response.body()?.string(), Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(this@MainActivity, "login is not correct :(", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Toast.makeText(this@MainActivity, "error :(", Toast.LENGTH_LONG).show()
+
+                    }
+
+                })
+
+            }
         }
     }
 }
