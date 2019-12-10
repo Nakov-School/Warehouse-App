@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="me.tcpackfrequency.warehouse">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="me.tcpackfrequency.warehouse">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -10,14 +11,23 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".EditBox"
+                  android:theme="@style/AppTheme.NoActionBar">>
+        </activity>
+        <activity
+                android:name=".Positions"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
                 android:name=".SectionActivity"
                 android:label="sections"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                    <action android:name="me.tcpackfrequency.warehouse.SectionActivity" />
-                    <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="me.tcpackfrequency.warehouse.SectionActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity

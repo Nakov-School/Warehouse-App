@@ -12,6 +12,16 @@
             android:layout_width="match_parent"
             android:theme="@style/AppTheme.AppBarOverlay"/>
 
+    <ImageButton
+            android:text="back"
+            android:layout_width="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="60dp"
+            android:id="@+id/backbtn"
+            android:adjustViewBounds="true"
+            android:src="@drawable/backarrowy"
+            android:background="@android:color/transparent" android:backgroundTint="@android:color/transparent"
+            android:scaleType="fitCenter"/>
 
 
     <TextView android:layout_width="match_parent" android:layout_height="100dp"
@@ -26,8 +36,8 @@
                 android:layout_marginTop="100dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:columnCount="3"
-                android:rowCount="7"
+                android:columnCount="6"
+                android:rowCount="10"
                 android:orientation="horizontal"
                 android:layout_gravity="fill_vertical"
                 tools:context=".GridXMLActivity" >
@@ -35,165 +45,156 @@
                 android:id="@+id/button1"
                 android:layout_gravity="left|top"
                 android:text="1"
-                android:layout_width="200dp"
-                android:layout_height="120dp" android:layout_row="0"
+                android:layout_width="170dp"
+                android:layout_height="105dp" android:layout_row="0"
                 android:onClick="onClick"/>
 
         <Button
                 android:id="@+id/button2"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="2"
                 android:onClick="onClick"/>
 
         <Button
                 android:id="@+id/button3"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="3"
                 android:onClick="onClick"/>
 
         <Button
                 android:id="@+id/button4"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="4"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button5"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="5"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button6"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="6"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button7"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="7"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button8"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="8"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button9"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="9"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button10"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="10"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button11"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="11"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button12"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="12"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button13"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="13"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button14"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="14"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button15"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="15"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button16"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="16"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button17"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="17"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button18"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="18"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button19"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="19"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button20"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="20"
                 android:onClick="onClick"/>
         <Button
                 android:id="@+id/button21"
                 android:layout_gravity="left|top"
-                android:layout_width="200dp"
-                android:layout_height="120dp"
+                android:layout_width="170dp"
+                android:layout_height="105dp"
                 android:text="21"
                 android:onClick="onClick"
                 />
 
     </GridLayout>
-    <ImageButton
-            android:text="back"
-            android:layout_width="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_height="60dp"
-            android:id="@+id/backbtn"
-            android:adjustViewBounds="true"
-            android:src="@drawable/backarrowy"
-            android:background="@android:color/transparent" android:backgroundTint="@android:color/transparent"
-            android:scaleType="fitCenter"/>
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
