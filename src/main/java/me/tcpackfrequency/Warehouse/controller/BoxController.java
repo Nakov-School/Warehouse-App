@@ -3,6 +3,7 @@ package me.tcpackfrequency.Warehouse.controller;
 import me.tcpackfrequency.Warehouse.model.Box;
 import me.tcpackfrequency.Warehouse.repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -35,13 +36,13 @@ public class BoxController {
     }
 
     @PutMapping("/boxes/{id}")
-    public ResponseEntity<Object> updateBox(@RequestBody Box box, @PathVariable int id) {
-        Optional<Box> boxOptional = repository.findById(id);
-        if (!boxOptional.isPresent())
-            return ResponseEntity.notFound().build();
-        box.setId(id);
-        repository.save(box);
-        return ResponseEntity.noContent().build();
+    public void updateBox(@RequestBody Box box, @PathVariable int id) {
+        List<Box> boxes = repository.findAll();
+        for(Box foundbox : boxes){
+            if(box.getSector() == foundbox.getSector() && box.getPosition() == foundbox.getPosition()){
+                repository.save(box);
+            }
+        }
     }
 
     @DeleteMapping("/boxes/{id}")
@@ -49,8 +50,32 @@ public class BoxController {
         repository.deleteById(id);
     }
 
+    @DeleteMapping("/boxes")
+    public ResponseEntity<Object> deleteBoxByJSON(@RequestBody Box box){
+        for(Box found : repository.findAll()) {
+            if(box.getSector() == found.getSector()) {
+                if(box.getPosition() == found.getPosition()) {
+                    repository.delete(found);
+                    return ResponseEntity.noContent().build();
+                }
+            }
+        }
+        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @PostMapping("/boxes")
     public ResponseEntity<Object> createBox(@RequestBody Box box) {
+        List<Box> boxes = repository.findAll();
+        for(Box found : boxes){
+            if(box.getSector() == found.getSector() && box.getPosition() == found.getPosition()) {
+                Optional<Box> f = repository.findById(found.getId());
+                f.get().setContent(box.getContent());
+                f.get().setQuantity(box.getQuantity());
+                f.get().setPr(box.isPr());
+                repository.save(f.get());
+                return ResponseEntity.noContent().build();
+            }
+        }
         Box savedBox = repository.save(box);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
